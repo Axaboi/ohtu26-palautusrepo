@@ -1,5 +1,5 @@
 import unittest
-from statistics_service import StatisticsService
+from statistics_service import StatisticsService, SortBy
 from player import Player
 
 class PlayerReadersStub:
@@ -45,7 +45,7 @@ class TestStatisticsService(unittest.TestCase):
     def test_pistejarjestys_pelaajat_kaikki(self):
         comparison_players = ["Gretzky", "Lemieux", "Yzerman", "Kurri", "Semenko"]
 
-        player_count = len(comparison_players) - 1
+        player_count = len(comparison_players)
 
         players = self.stats.top(player_count)
 
@@ -56,9 +56,42 @@ class TestStatisticsService(unittest.TestCase):
     def test_pistejarjestys_pelaajat_osa(self):
         comparison_players = ["Gretzky", "Lemieux", "Yzerman"]
 
-        player_count = len(comparison_players) - 1
+        player_count = len(comparison_players)
 
         players = self.stats.top(player_count)
+
+        player_names = [i.name for i in players]
+
+        self.assertEqual(comparison_players, player_names)
+
+    def test_enum_jarjestys_kokonaispisteet(self):
+        comparison_players = ["Gretzky", "Lemieux", "Yzerman", "Kurri", "Semenko"]
+
+        player_count = len(comparison_players)
+
+        players = self.stats.top(player_count, SortBy.POINTS)
+
+        player_names = [i.name for i in players]
+
+        self.assertEqual(comparison_players, player_names)
+
+    def test_enum_jarjestys_maalit(self):
+        comparison_players = ["Lemieux", "Yzerman", "Kurri", "Gretzky", "Semenko"]
+
+        player_count = len(comparison_players)
+
+        players = self.stats.top(player_count, SortBy.GOALS)
+
+        player_names = [i.name for i in players]
+
+        self.assertEqual(comparison_players, player_names)
+
+    def test_enum_jarjestys_syotot(self):
+        comparison_players = ["Gretzky", "Yzerman", "Lemieux", "Kurri", "Semenko"]
+
+        player_count = len(comparison_players)
+
+        players = self.stats.top(player_count, SortBy.ASSISTS)
 
         player_names = [i.name for i in players]
 
