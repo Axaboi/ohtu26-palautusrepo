@@ -3,6 +3,7 @@ class PlayerStats:
         self.reader = reader
 
     def top_scorers_by_nationality(self, nationality):
+
         def player_order(player):
             return player.points
 
