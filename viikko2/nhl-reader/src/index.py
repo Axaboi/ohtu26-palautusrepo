@@ -12,11 +12,16 @@ def main():
         if player.nationality == "FIN":
             players.append(player)
 
-    print("Players from FIN:")
+    def player_order(player):
+        return player.points
+
+    sorted_players = sorted(players, key=player_order, reverse=True)
+
+    print("Players from FIN")
 
     print()
 
-    for player in players:
+    for player in sorted_players:
         print(player)
 
 if __name__ == "__main__":
