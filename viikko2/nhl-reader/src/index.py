@@ -21,19 +21,11 @@ def main():
                                     "DEN", "NED", "AUT", "BLR", "GER",
                                     "SUI", "NOR", "UZB", "LAT", "AUS"])
 
-        players = stats.top_scorers_by_nationality(nationality)
-
         console = Console()
 
-        table = Table(title=f"Season {season} players from {nationality}")
+        table = Table("Released", "teams", "goals", "assists", "points", title=f"Season {season} players from {nationality}")
 
-        table.add_column("Released", justify="right", style="cyan", no_wrap=True)
-        table.add_column("teams", style="magenta")
-        table.add_column("goals", style="green")
-        table.add_column("assists", style="green")
-        table.add_column("points", style="green")
-
-        for player in players:
+        for player in stats.top_scorers_by_nationality(nationality):
             table.add_row(f"{player.name}", f"{player.team}", f"{player.goals}", f"{player.assists}", f"{player.points}")
 
         console.print(table)
@@ -41,4 +33,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

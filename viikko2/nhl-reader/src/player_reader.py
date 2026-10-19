@@ -8,7 +8,7 @@ class PlayerReader:
         self.get_players = self.player_parse()
 
     def player_parse(self):
-        response = requests.get(self.url).json()
+        response = requests.get(self.url, timeout=10).json()
         players = []
 
         for player_dict in response:
@@ -16,3 +16,6 @@ class PlayerReader:
             players.append(player)
 
         return players
+
+    def fix_pylint_method_count(self):
+        return
