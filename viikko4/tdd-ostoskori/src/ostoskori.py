@@ -11,7 +11,8 @@ class Ostoskori:
         return sum(tuote.hinta() for tuote in self._ostokset)
 
     def lisaa_tuote(self, lisattava: Tuote):
-        self._ostokset.append(lisattava)
+        if not any(tuote.nimi() == lisattava.nimi() for tuote in self._ostokset):
+            self._ostokset.append(lisattava)
 
     def poista_tuote(self, poistettava: Tuote):
         pass
