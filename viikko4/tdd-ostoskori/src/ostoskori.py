@@ -5,13 +5,13 @@ class Ostoskori:
         self._ostokset = []
 
     def tavaroita_korissa(self):
-        return 0
+        return len(self._ostokset)
 
     def hinta(self):
         return 0
 
     def lisaa_tuote(self, lisattava: Tuote):
-        pass
+        self._ostokset.append(lisattava)
 
     def poista_tuote(self, poistettava: Tuote):
         pass
