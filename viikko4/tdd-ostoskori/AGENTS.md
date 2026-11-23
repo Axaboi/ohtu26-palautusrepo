@@ -2,3 +2,4 @@
 - Code of ostos.py and tuote.py should not be changed
 - Tests should not be edited unless explicitly asked
 - Always implement absolutely minimal code that makes the tests pass
+- Make changes so that the latest test passes and it does not affect other tests
